@@ -1,0 +1,108 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}
+ Funsho Store | Register 
+{% endblock %} 
+{% block moreheader %}
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<link rel="stylesheet" href="{% static 'account/css/style.css' %}" />
+{% endblock %} 
+{% block content %}
+<section class="ftco-section">
+  <div class="container">
+    <!-- <div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">BECOME A DRIVER </h2>
+				</div>
+			</div> -->
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="wrap d-md-flex">
+          <div
+            class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last"
+            style="
+              background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)
+                ), url({% static 'account/images/hoody.jpg' %}); background-position: center; background-size: cover;"
+          	>
+            <div class="text w-100">
+              <div class="icon"><span class="fa fa-solid fa-user"></span></div>
+              <h2>CREATE AN ACCOUNT</h2>
+              <p>Already have an account?</p>
+              <a
+                href="{% url 'account:login' %}"
+                class="btn btn-white btn-outline-white"
+                >Sign In</a
+              >
+            </div>
+          </div>
+          <div class="login-wrap p-4 p-md-5">
+            <h3 class="mb-4">Hello! <span>Please signup to continue</span></h3>
+				{% if register.errors %}
+				<div class="alert alert-danger" role="alert">
+					<ul>
+						{% for field, errors in register.errors.items%}
+							{% for error in errors %}
+								<li>{{error}}</li>
+							{% endfor %}
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
+            <form method="post" action="#" class="signup-form">
+				{% csrf_token %}
+				<div class="form-group mb-4">
+					{{register.first_name}}
+				</div>
+				<div class="form-group mb-4">
+					{{register.last_name}}
+				</div>
+				<div class="form-group mb-4">
+					{{register.username}}
+				</div>
+				<div class="form-group mb-4">
+					{{register.email}}
+				</div>
+				<div class="form-group mb-4">
+					{{register.password1}}
+				</div>
+				<div class="form-group mb-4">
+					{{register.password2}}
+				</div>
+				<div class="form-group">
+                <button
+                  type="submit"
+                  class="btn submit p-3"
+                  style="background-color: #740000; color: #fff"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </form>
+            <div class="w-100 social-wrap">
+              <p class="mt-4">
+                Already have an account?
+                <a href="{% url 'account:login' %}">Sign In</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{% static 'account/js/jquery.min.js' %}"></script>
+<script src="{% static 'account/js/popper.js' %}"></script>
+<script src="{% static 'account/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'account/js/main.js' %}"></script>
+
+{% endblock %}

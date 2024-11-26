@@ -36,6 +36,13 @@ def index(request):
         products = Product.objects.filter(category=4)[:8]
     elif filter_value == 'Accessories':
         products = Product.objects.filter(category=5)[:8]
+    # elif filter_value == 'all':
+    #     products = Product.objects.filter(category='')[:12]
+        # if load_more:
+        #     products = Product.objects.all()[:12]
+        #     return JsonResponse({'products': serialize('json', products)})
+        # else:
+        #     return JsonResponse({'products': serialize('json', products[:8])})
     else:
         products = Product.objects.all()[:8]
     context = {
@@ -82,28 +89,29 @@ def contact(request):
     return render(request, 'contact.html')
 
 def product(request):
-    
+    category = Category.objects.all()
     
     # fetching product from server
-    # filter_value = request.GET.get('filter', 'all')
+    filter_value = request.GET.get('filter', 'all')
         
-    # if filter_value == 'women':
-    #     products = Product.objects.filter(category=1)[:12]
-    # elif filter_value == 'men':
-    #     products = Product.objects.filter(category=3)[:12]
-    # elif filter_value == 'bag':
-    #     products = Product.objects.filter(category=2)[:12]
-    # elif filter_value == 'shoes':
-    #     products = Product.objects.filter(category=4)[:12]
-    # elif filter_value == 'accessories':
-    #     products = Product.objects.filter(category=5)[:12]
-    # else:
-    #     products = Product.objects.all()[:12]
-    # context = {
-    #    'products': products,
-    #    'filter_value': filter_value
-    # }
-    return render(request, 'product.html')
+    if filter_value == 'Women':
+        products = Product.objects.filter(category=1)[:12]
+    elif filter_value == 'Men':
+        products = Product.objects.filter(category=3)[:12]
+    elif filter_value == 'Bag':
+        products = Product.objects.filter(category=2)[:12]
+    elif filter_value == 'Shoes':
+        products = Product.objects.filter(category=4)[:12]
+    elif filter_value == 'Accessories':
+        products = Product.objects.filter(category=5)[:12]
+    else:
+        products = Product.objects.all()
+    context = {
+       'products': products,
+       'categories': category,
+       'filter_value': filter_value
+    }
+    return render(request, 'product.html', context)
 
 def product_detail(request, pk):
     product_detail = get_object_or_404(Product, id = pk)

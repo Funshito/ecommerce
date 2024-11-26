@@ -35,8 +35,13 @@ class Cart():
     def __len__(self):
         return sum(item['qty'] for item in self.cart.values())
     
-    def get_total_price(self):
+    def get_subtotal_price(self):
         return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
+    
+    def get_total_price(self):
+        sub_total = sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
+        whole_total = sub_total + Decimal(5000)
+        return whole_total
     
     def delete(self, product):
         product_id = str(product)

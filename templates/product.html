@@ -15,25 +15,13 @@
 						All Products
 					</button>
 
-					<button type="submit" name="filter" value="women" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if filter_value == 'women' %} how-active1 {% endif %}" data-filter="">
-						Women
-					</button>
-
-					<button type="submit" name="filter" value="men" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if filter_value == 'men' %} how-active1 {% endif %}" data-filter="">
-						Men
-					</button>
-
-					<button type="submit" name="filter" value="bag" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if filter_value == 'bag' %} how-active1 {% endif %}" data-filter="">
-						Bag
-					</button>
-
-					<button type="submit" name="filter" value="shoes" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if filter_value == 'shoes' %} how-active1 {% endif %}" data-filter="">
-						Shoes
-					</button>
-
-					<button type="submit" name="filter" value="accessories" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if filter_value == 'accessories' %} how-active1 {% endif %}" data-filter="">
-						Accessories
-					</button>
+					{% if categories %}
+					{% for category in categories %}
+					<button type="submit" name="filter" value="{{ category.name }}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if filter_value == category.name %} how-active1 {% endif %}" data-filter="">
+                        {{ category.name }}
+                    </button>
+					{% endfor %}
+					{% endif %}
 				</form>
             </div>
 
@@ -63,7 +51,8 @@
             </div>
 
             <!-- Filter -->
-            <div class="dis-none panel-filter w-full p-t-10">
+             
+            <!-- <div class="dis-none panel-filter w-full p-t-10">
                 <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
                     <div class="filter-col1 p-r-15 p-b-27">
                         <div class="mtext-102 cl2 p-b-15">
@@ -249,7 +238,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="row isotope-grid">

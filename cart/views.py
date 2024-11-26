@@ -25,8 +25,9 @@ def cart_delete(request):
         product_id = int(request.POST.get('productid'))
         cart.delete(product=product_id)
         cartqty = cart.__len__()
-        carttotal = cart.get_total_price()
-        response = JsonResponse({'qty': cartqty, 'subtotal': carttotal})
+        carttotal = cart.get_subtotal_price()
+        cart_whole_total = cart.get_total_price()
+        response = JsonResponse({'qty': cartqty, 'subtotal': carttotal, 'total': cart_whole_total})
         return response
     
 def cart_update(request):
@@ -36,6 +37,7 @@ def cart_update(request):
         product_qty = int(request.POST.get('productqty'))       
         cart.update(product=product_id, qty=product_qty)
         cartqty = cart.__len__()
-        carttotal = cart.get_total_price()
-        response = JsonResponse({'qty': cartqty, 'subtotal': carttotal})
+        carttotal = cart.get_subtotal_price()
+        cart_whole_total = cart.get_total_price()
+        response = JsonResponse({'qty': cartqty, 'subtotal': carttotal, 'total': cart_whole_total})
         return response

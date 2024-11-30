@@ -19,7 +19,7 @@
         </a>
 
         <span class="stext-109 cl4">
-            8 Inspiring Ways to Wear Dresses in the Winter
+            {{blog_details.title}}
         </span>
     </div>
 </div>
@@ -33,7 +33,7 @@
                 <div class="p-r-45 p-r-0-lg">
                     <!--  -->
                     <div class="wrap-pic-w how-pos5-parent">
-                        <img src="{% static 'ecommerce/images/blog-04.jpg' %}" alt="IMG-BLOG">
+                        <img src="{{blog_details.featured_image.url}}" alt="IMG-BLOG">
 
                         <div class="flex-col-c-m size-123 bg9 how-pos5">
                             <span class="ltext-107 cl2 txt-center">
@@ -49,7 +49,7 @@
                     <div class="p-t-32">
                         <span class="flex-w flex-m stext-111 cl2 p-b-19">
                             <span>
-                                <span class="cl4">By</span> Admin  
+                                <span class="cl4">By</span> {{blog_details.author}} 
                                 <span class="cl12 m-l-4 m-r-6">|</span>
                             </span>
 

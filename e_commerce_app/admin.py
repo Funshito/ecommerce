@@ -15,9 +15,9 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name', )}
     
     
-# @admin.register(BlogPost)
-# class BlogPostAdmin(admin.ModelAdmin):
-#     prepopulated_fields = {'slug': ('title', )}
+@admin.register(BlogPost)
+class BlogPostAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title', )}
     
 
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Contact, Category
+from .models import Product, Contact, Category, BlogPost
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
@@ -56,11 +56,19 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 
-def blog_detail(request):
-    return render(request, 'blog-detail.html')
+def blog_detail(request, pk):
+    blog_detail = get_object_or_404(BlogPost, id = pk)
+    context = {
+        'blog_details': blog_detail
+    }
+    return render(request, 'blog-detail.html', context)
 
 def blog(request):
-    return render(request, 'blog.html')
+    blog = BlogPost.objects.all().order_by("-created_at")
+    context = {
+        'blogs': blog
+    }
+    return render(request, 'blog.html', context)
 
 def contact(request):
     if request.method == 'POST':

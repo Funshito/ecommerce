@@ -46,17 +46,18 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
-# class BlogPost(models.Model):
-#     title = models.CharField(max_length=255)
-#     slug = models.SlugField(unique=True)
-#     content = models.TextField()
-#     author = models.ForeignKey(User, on_delete=models.CASCADE)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#     featured_image = models.ImageField(upload_to='blog/uploads/', blank=True, null=True)
+class BlogPost(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
+    content = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    featured_image = models.ImageField(upload_to='blog/uploads/', blank=True, null=True)
+    is_featured = models.BooleanField(default=True)
         
-#     def __str__(self):
-#         return self.title
+    def __str__(self):
+        return self.title
         
      
     

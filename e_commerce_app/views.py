@@ -65,8 +65,17 @@ def blog_detail(request, pk):
 
 def blog(request):
     blog = BlogPost.objects.all().order_by("-created_at")
+    dDate = BlogPost.objects.only('created_at')
+    date_obj = list(dDate)
+    for d in date_obj:
+        d = d.created_at.strftime('%b')
+        
+
+    # print(list(dDate))
+    
     context = {
-        'blogs': blog
+        'blogs': blog,
+        'dDate': d
     }
     return render(request, 'blog.html', context)
 

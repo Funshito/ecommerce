@@ -54,7 +54,7 @@ class BlogPost(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     featured_image = models.ImageField(upload_to='blog/uploads/', blank=True, null=True)
-    is_featured = models.BooleanField(default=True)
+    # is_featured = models.BooleanField(default=True)   
         
     def __str__(self):
         return self.title

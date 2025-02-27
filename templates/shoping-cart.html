@@ -205,7 +205,7 @@ Shoping Cart
           </div>
 
           <button
-            class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
+            id='checkout-btn' class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
           >
             Proceed to Checkout
           </button>
@@ -240,7 +240,7 @@ Shoping Cart
   })
 
   // update item in cart 
-  $(document).on('click', '.update-button', function(e){
+  $(document).on('click', '#update-button', function(e){
       e.preventDefault();
       var prodid = $(this).data('index')
       $.ajax({
@@ -260,6 +260,12 @@ Shoping Cart
           error: function(xhr, errmsg, err){}
       });
   })
+
+  $(document).on('click', '#checkout-btn', function(e){
+    e.preventDefault();
+    alert("button connected")
+    window.loacation.
+  });
 </script>
 
 {% endblock %}
